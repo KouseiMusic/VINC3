@@ -36,10 +36,10 @@ https://github.com/user-attachments/assets/7ab03f56-2037-4e66-9a67-ac912e6d3599
 
 ## 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧
 
-1. Download the latest [`VINC3.zip`](https://github.com/DeobfuscateMusic/VINC3/releases/download/VINC3_1.0.0/VINC3.zip)
+1. Download the latest `VINC3`
 2. Extract & Drag `VINC3` to your `Applications` folder.
 - _Note : Follow the macOS Permissions tutorial below for first-time setup, before use and before applying step 3._
-3. Launch `VINC3`, `Allow` Microphone capture.
+3. Launch `VINC3` and `Allow` Microphone capture once the tab appears.
 4. Select your audio source `MIC` or `SYSTEM`
 5. Click on `INITIALIZE`. It will start the engine.
 
