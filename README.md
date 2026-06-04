@@ -11,7 +11,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ---
 
-https://github.com/user-attachments/assets/7ab03f56-2037-4e66-9a67-ac912e6d3599
+<img width="1439" height="868" alt="vinc3preview" src="https://github.com/user-attachments/assets/8f94e5c6-8586-49af-a916-3a74b9249dbc" />
 
 ---
 
