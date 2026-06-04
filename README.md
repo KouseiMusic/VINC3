@@ -36,7 +36,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ## 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧
 
-1. Download the latest `VINC3`
+1. Download the latest [`VINC3`](https://github.com/KouseiMusic/VINC3/releases/download/VINC3_1.1.0/VINC3.app.macOS.U2B.zip)
 2. Extract & Drag `VINC3` to your `Applications` folder.
 - _Note : Follow the macOS Permissions tutorial below for first-time setup, before use and before applying step 3._
 3. Launch `VINC3` and `Allow` Microphone capture once the tab appears.
