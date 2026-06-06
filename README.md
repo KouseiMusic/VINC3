@@ -64,7 +64,7 @@ Required for **System Audio Loopback** (capturing audio from other softwares).
 ## 𝐌𝐨𝐝𝐮𝐥𝐞𝐬
 | Module | Description | Features |
 | :--- | :--- | :--- |
-| **Spectrogram** | 3D spectral energy visualization. | **Sphere**, **Wave**, **Cube** & **Terminal** modes. |
+| **Spectrogram** | 3D spectral energy visualization. | Sphere, Wave, Cube & Terminal modes. |
 | **FFT Meter** | Surgical frequency monitoring via HD FFT. | Peak tracking, auto-labeling & Logarithmic scaling (20Hz-20kHz). |
 | **Level Meters** | Industry-standard loudness compliance. | Real-time M/S/I LUFS, dBFS tracking & Crest Factor alerts. |
 | **Analog VU** | Classic hardware-inspired ballistics. | 300ms integration time & Hot Zone saturation indicators. |
