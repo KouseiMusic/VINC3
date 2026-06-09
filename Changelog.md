@@ -1,10 +1,8 @@
-# VINC3 — Changelog
+# 𝐕𝐈𝐍𝐂𝟑 - 𝐂𝐡𝐚𝐧𝐠𝐞𝐥𝐨𝐠
 
----
+## 𝟏.𝟐.𝟎 (𝟎𝟔-𝟐𝟎𝟐𝟔)
 
-## 1.2.0 (06-2026)
-
-### Metering & Accuracy
+### 𝐌𝐞𝐭𝐞𝐫𝐢𝐧𝐠 & 𝐀𝐜𝐜𝐮𝐫𝐚𝐜𝐲
 
 - Fixed the Pitch & Stats panel showing a completely wrong peak level reading. The meter was converting the level value twice by mistake, producing numbers that bore no relation to the actual signal. For example, a signal at -20 dB would appear as roughly +26 dB. Readings are now accurate.
 
@@ -12,11 +10,11 @@
 
 - Fixed LUFS values drifting away from their true readings after several hours of continuous use. Computers accumulate tiny rounding errors when doing repeated arithmetic and the LUFS running average was never corrected for this. Over a long session the drift became noticeable. The accumulator now resets its total periodically to keep readings accurate regardless of session length.
 
-### System Audio
+### 𝐒𝐲𝐬𝐭𝐞𝐦 𝐀𝐮𝐝𝐢𝐨
 
 - Fixed SYSTEM mode silently producing no signal on macOS even after Screen Recording permission had been granted. An internal setting that only applies on Windows was mistakenly being applied on macOS as well. macOS does not recognise it and when it encountered it; discarded the audio track without any error message. Removing it restores reliable system audio capture on all supported macOS versions.
 
-### Interface
+### 𝐈𝐧𝐭𝐞𝐫𝐟𝐚𝐜𝐞
 
 - Fixed Level Meters stuttering and animating unevenly. The peak-hold indicator was causing the display to restart its update loop dozens of times per second every time a new peak was detected. Each restart introduced a brief gap visible as a stutter. The update loop now runs continuously without interruption.
 
@@ -24,11 +22,11 @@
 
 - Fixed the green fullscreen button in the title bar being broken or permanently greyed out on macOS Sequoia and Tahoe. Two internal window settings were contradicting each other, which caused macOS to disable the button. The settings are now consistent and the button works as expected.
 
-### Settings
+### 𝐒𝐞𝐭𝐭𝐢𝐧𝐠𝐬
 
 - Fixed theme selection and audio source not being remembered after closing and reopening the application. Two separate parts of the application were using different internal names when saving and reading these preferences, so they never matched on the next launch. Every session started on the default teal theme and System source regardless of what had been set. The names are now unified, and preferences are saved the moment they are changed rather than only when Save Layout is clicked.
 
-### Reliability
+### 𝐑𝐞𝐥𝐢𝐚𝐛𝐢𝐥𝐢𝐭𝐲
 
 - Fixed pressing INITIALIZE rapidly or twice in quick succession causing the audio engine to start twice at the same time, consuming extra resources and potentially causing conflicts. The engine now ignores any start request while it is already running.
 
@@ -38,25 +36,29 @@
 
 ---
 
-## 1.1.0 (06-2026)
+## 𝟏.𝟏.𝟎 (𝟎𝟔-𝟐𝟎𝟐𝟔)
 
-### Layout & Workspace
+### 𝐋𝐚𝐲𝐨𝐮𝐭 & 𝐖𝐨𝐫𝐤𝐬𝐩𝐚𝐜𝐞
 
 - Added layout saving and loading. You can now save which modules are open, where they are positioned, and how large they are, directly from the toolbar using the Save button. Load restores exactly what was saved. Reset returns everything to the factory arrangement.
 
 - Updated the default factory layout. The out-of-the-box positions and sizes of all module windows have been revised to make better use of the screen from the first launch, without needing to rearrange anything manually.
 
-### Interface
+### 𝐈𝐧𝐭𝐞𝐫𝐟𝐚𝐜𝐞
 
-- 3 New visual themes: White, Blue, Windows 98.
+- 3 New visual themes: White, Blue & Windows 98.
 
 - Two New 3D Spectrograms: Terminal & Binary.
 
-- Fixed the FFT Meter tooltip — the small overlay showing frequency and level when hovering over the display, getting cut off at the top and right edges of the module window. It now shifts its position to stay fully visible wherever the cursor is.
+- 2 New Modules:
+  - Phase Correlation meter with Mid and Side level readout.
+  - Pitch & Stats panel showing the dominant musical note, an estimate of the audio bit depth, DC offset per channel and stereo phase correlation.
+
+- Fixed the FFT Meter tooltip; the small overlay showing frequency and level when hovering over the display, getting cut off at the top and right edges of the module window. It now shifts its position to stay fully visible wherever the cursor is.
 
 - Fixed the Bit Depth readout in the Pitch & Stats panel overlapping with other information. It has been moved to its own clearly separated position in the layout.
 
-### Performance & Display
+### 𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 & 𝐃𝐢𝐬𝐩𝐥𝐚𝐲
 
 - Enabled GPU acceleration at application startup, allowing the graphics hardware to take on more of the rendering work and keep the interface responsive during sessions with multiple modules open.
 
@@ -68,7 +70,7 @@
 
 ---
 
-## 1.0.0 (04-2026)
+## 𝟏.𝟎.𝟎 (𝟎𝟒-𝟐𝟎𝟐𝟔)
 
 - 3D Spectrogram with 3 visualisation modes: Sphere, Wave & Cube.
 
@@ -82,11 +84,7 @@
 
 - Stereo Monitor vector scope for visualising stereo width and left/right balance as a Lissajous figure with phosphor persistence.
 
-- Pitch & Stats panel showing the dominant musical note, an estimate of the audio bit depth, DC offset per channel and stereo phase correlation.
-
 - Linear Spectrogram scrolling waterfall for tracking frequency energy over time, useful for spotting sustained resonances and tonal buildup.
-
-- Phase Correlation meter with Mid and Side level readout.
 
 - 4 visual themes: Teal, Pink, Purple & Green.
 
