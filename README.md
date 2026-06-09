@@ -46,7 +46,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 3. Before launching for the first time, grant the required permissions described in the section below. Doing this before the first launch avoids having to restart the application.
 4. Launch `VINC3`. If macOS shows a warning that the app is from an unidentified developer, right-click the app icon and select `Open`, then confirm.
 5. When prompted, allow Microphone access.
-6. Select your audio source - `MIC` for your microphone or audio interface, `SYSTEM` for whatever is playing through your computer.
+6. Select your audio source. `MIC` for your microphone or audio interface, `SYSTEM` for whatever is playing through your computer.
 7. Click `INITIALIZE` to start the engine. All active modules will begin displaying live data.
 
 ---
@@ -94,8 +94,8 @@ On macOS Sonoma and later, system audio capture is handled natively by the opera
 | **Level Meters** | Industry-standard loudness metering. Shows peak levels for left and right channels in dBFS, plus Momentary, Short-Term, and Integrated LUFS to ITU-R BS.1770-4 spec. Also displays Crest Factor, the gap between peak and average, which indicates dynamic range. | Horizontal, Vertical |
 | **Analog VU Meter** | A faithful recreation of the classic hardware VU meter, with a 300 ms ballistic integration time that reflects perceived loudness similarly to how engineers trained on analogue consoles think about level. | Classic needle, Modern LED bar |
 | **Oscilloscope** | Displays the raw audio waveform for both left and right channels simultaneously in real time. Useful for checking waveform symmetry, clipping and the relationship between channels. Zero-crossing trigger ensures a stable, readable display. | - |
-| **Stereo Monitor** | A vector scope showing the stereo image as a Lissajous figure. A perfectly mono signal appears as a vertical line. A wide stereo signal fills toward the corners. Out-of-phase audio pulls the image horizontal. Phosphor persistence gives a sense of movement history. | — |
-| **Pitch & Stats** | A collection of analytical readouts: the dominant musical pitch currently present in the signal, an estimate of the audio's bit depth, DC offset per channel (a sign of hardware or plugin issues) and stereo phase correlation. | — |
+| **Stereo Monitor** | A vector scope showing the stereo image as a Lissajous figure. A perfectly mono signal appears as a vertical line. A wide stereo signal fills toward the corners. Out-of-phase audio pulls the image horizontal. Phosphor persistence gives a sense of movement history. | - |
+| **Pitch & Stats** | A collection of analytical readouts: the dominant musical pitch currently present in the signal, an estimate of the audio's bit depth, DC offset per channel (a sign of hardware or plugin issues) and stereo phase correlation. | - |
 | **Linear Spectrogram** | A scrolling waterfall display that shows frequency energy moving left to right over time. Useful for spotting sustained resonances, tonal buildup, or low-frequency energy that is difficult to see in a standard FFT display. | Theme colours, Classic thermal palette |
 | **Phase Correlation** | Shows the phase relationship between the left and right channels on a scale from -1 to +1. A reading near +1 means the channels are in phase and will sum correctly to mono. A reading near -1 means the channels are out of phase and will partially or fully cancel in mono. Also displays Mid and Side levels. | - |
 
