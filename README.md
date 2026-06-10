@@ -72,15 +72,15 @@ _VINC3 does not record video, does not record your screen, does not store audio,
 
 ## 𝐀𝐮𝐝𝐢𝐨 𝐒𝐨𝐮𝐫𝐜𝐞 𝐌𝐨𝐝𝐞𝐬
 
-*$MIC - Microphone / Hardware Input*$
-
-Captures audio directly from your microphone or audio interface. Use this mode when you want to analyse a signal coming into your Mac from an external source, an instrument, a vocalist, a hardware synthesiser or any device plugged into your interface. No additional software is needed.
-
 **SYSTEM - System Audio Loopback**
 
 Captures whatever audio is currently playing through your Mac's audio output, your DAW's master bus, a streaming application, a video or anything else. This is the primary mode for mastering monitoring, reference listening comparisons and broadcast compliance checking.
 
 On macOS Sonoma and later, system audio capture is handled natively by the operating system via ScreenCaptureKit. No third-party virtual audio device is required. If you are on an older macOS version, you will need a virtual audio driver such as [BlackHole](https://github.com/ExistentialAudio/BlackHole) to route audio to VINC3.
+
+**MIC - Microphone / Hardware Input**
+
+Captures audio directly from your microphone or audio interface. Use this mode when you want to analyse a signal coming into your Mac from an external source, an instrument, a vocalist, a hardware synthesiser or any device plugged into your interface. No additional software is needed.
 
 ---
 
