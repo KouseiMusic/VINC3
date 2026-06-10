@@ -17,7 +17,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ---
 
-## Features
+## 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
 
 - **3D Spectrogram Engine**: A three-dimensional view of your audio's frequency content, updated in real time. Visualise how energy is distributed across the spectrum over time, with five distinct animation modes to suit different analytical or aesthetic preferences.
 - **Full Metering Suite**: Nine independent monitoring modules covering loudness, dynamics, stereo imaging, waveform, frequency analysis, and pitch; everything needed to make informed mixing and mastering decisions without switching tools.
@@ -29,7 +29,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ---
 
-## System Requirements
+## 𝐒𝐲𝐬𝐭𝐞𝐦 𝐑𝐞𝐪𝐮𝐢𝐫𝐞𝐦𝐞𝐧𝐭𝐬
 
 - **macOS**: 14.0 (Sonoma), 15.0 (Sequoia), or 16.0 (Tahoe).
 - **Architecture**: Intel (x64), Apple Silicon (arm64) & Universal (U2B).
@@ -39,8 +39,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ---
 
-## Installation
-
+## 𝐈𝐧𝐬𝐭𝐚𝐥𝐥𝐚𝐭𝐢𝐨𝐧
 1. Download the latest [`VINC3`](https://github.com/KouseiMusic/VINC3/releases/download/VINC3_1.2.0/VINC3.app.macOS.U2B.zip) release.
 2. Open the downloaded ZIP file and drag `VINC3.app` to your `Applications` folder.
 3. Before launching for the first time, grant the required permissions described in the section below. Doing this before the first launch avoids having to restart the application.
@@ -51,7 +50,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ---
 
-## macOS Permissions
+## 𝐦𝐚𝐜𝐎𝐒 𝐏𝐞𝐫𝐦𝐢𝐬𝐬𝐢𝐨𝐧𝐬
 
 VINC3 requires two permissions to function. macOS will ask for these automatically the first time each feature is used, but granting them in advance through System Settings avoids interruptions during a session.
 
@@ -71,9 +70,9 @@ _VINC3 does not record video, does not record your screen, does not store audio,
 
 ---
 
-## Audio Source Modes
+## 𝐀𝐮𝐝𝐢𝐨 𝐒𝐨𝐮𝐫𝐜𝐞 𝐌𝐨𝐝𝐞𝐬
 
-**MIC - Microphone / Hardware Input**
+*$MIC - Microphone / Hardware Input*$
 
 Captures audio directly from your microphone or audio interface. Use this mode when you want to analyse a signal coming into your Mac from an external source, an instrument, a vocalist, a hardware synthesiser or any device plugged into your interface. No additional software is needed.
 
@@ -85,7 +84,7 @@ On macOS Sonoma and later, system audio capture is handled natively by the opera
 
 ---
 
-## Modules
+## 𝐌𝐨𝐝𝐮𝐥𝐞𝐬
 
 | Module | What it shows | Display options |
 | :--- | :--- | :--- |
@@ -101,7 +100,7 @@ On macOS Sonoma and later, system audio capture is handled natively by the opera
 
 ---
 
-## Controls
+## 𝐂𝐨𝐧𝐭𝐫𝐨𝐥𝐬
 
 | Control | What it does |
 | :--- | :--- |
@@ -118,7 +117,7 @@ On macOS Sonoma and later, system audio capture is handled natively by the opera
 
 ---
 
-## Credits
+## 𝐂𝐫𝐞𝐝𝐢𝐭𝐬
 
 - **Sponsor / Benefactor**: Vincent P.
 
