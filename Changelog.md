@@ -36,13 +36,7 @@
 
 ---
 
-## 𝟏.𝟎.𝟎 (𝟐𝟐-𝟎𝟓-𝟐𝟎𝟐𝟔)
-
-### 𝐋𝐚𝐲𝐨𝐮𝐭 & 𝐖𝐨𝐫𝐤𝐬𝐩𝐚𝐜𝐞
-
-- Added layout saving and loading. You can now save which modules are open, where they are positioned, and how large they are, directly from the toolbar using the Save button. Load restores exactly what was saved. Reset returns everything to the factory arrangement.
-
-- Updated the default factory layout. The out-of-the-box positions and sizes of all module windows have been revised to make better use of the screen from the first launch, without needing to rearrange anything manually.
+## 𝟏.𝟏.𝟎 (𝟎𝟓-𝟎𝟔-𝟐𝟎𝟐𝟔)
 
 ### 𝐈𝐧𝐭𝐞𝐫𝐟𝐚𝐜𝐞
 
@@ -54,6 +48,24 @@
   - Phase Correlation meter with Mid and Side level readout.
   - Pitch & Stats panel showing the dominant musical note, an estimate of the audio bit depth, DC offset per channel and stereo phase correlation.
 
+### 𝐋𝐚𝐲𝐨𝐮𝐭 & 𝐖𝐨𝐫𝐤𝐬𝐩𝐚𝐜𝐞
+
+- Updated the default factory layout. The out-of-the-box positions and sizes of all module windows have been revised to make better use of the screen from the first launch, without needing to rearrange anything manually.
+
+### 𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 & 𝐃𝐢𝐬𝐩𝐥𝐚𝐲
+
+- Fixed stuttering on Retina and Pro Display XDR screens. On 4K and higher-resolution displays, canvas modules were rendering at the full physical pixel density of the screen, which could cause choppy animation on high-refresh-rate monitors. Rendering is now capped at 2x scaling, which looks identical at normal viewing distances but is significantly lighter on the GPU.
+
+---
+
+## 𝟏.𝟎.𝟎 (𝟐𝟐-𝟎𝟓-𝟐𝟎𝟐𝟔)
+
+### 𝐋𝐚𝐲𝐨𝐮𝐭 & 𝐖𝐨𝐫𝐤𝐬𝐩𝐚𝐜𝐞
+
+- Added layout saving and loading. You can now save which modules are open, where they are positioned, and how large they are, directly from the toolbar using the Save button. Load restores exactly what was saved. Reset returns everything to the factory arrangement.
+
+### 𝐈𝐧𝐭𝐞𝐫𝐟𝐚𝐜𝐞
+
 - Fixed the FFT Meter tooltip; the small overlay showing frequency and level when hovering over the display, getting cut off at the top and right edges of the module window. It now shifts its position to stay fully visible wherever the cursor is.
 
 - Fixed the Bit Depth readout in the Pitch & Stats panel overlapping with other information. It has been moved to its own clearly separated position in the layout.
@@ -61,8 +73,6 @@
 ### 𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 & 𝐃𝐢𝐬𝐩𝐥𝐚𝐲
 
 - Enabled GPU acceleration at application startup, allowing the graphics hardware to take on more of the rendering work and keep the interface responsive during sessions with multiple modules open.
-
-- Fixed stuttering on Retina and Pro Display XDR screens. On 4K and higher-resolution displays, canvas modules were rendering at the full physical pixel density of the screen, which could cause choppy animation on high-refresh-rate monitors. Rendering is now capped at 2x scaling, which looks identical at normal viewing distances but is significantly lighter on the GPU.
 
 - Reduced CPU and GPU load on the FFT Meter. The glow effect on the spectrum line was previously produced by a blur operation that is costly when applied to a large path redrawn sixty times per second. It has been replaced with a layered drawing approach that produces the same visual result at a fraction of the processing cost.
 
