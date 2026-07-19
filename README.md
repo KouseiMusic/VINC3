@@ -19,12 +19,18 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ## 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
 
-- **3D Spectrogram Engine**: A three-dimensional view of your audio's frequency content, updated in real time. Visualise how energy is distributed across the spectrum over time, with five distinct animation modes to suit different analytical or aesthetic preferences.
-- **Full Metering Suite**: Nine independent monitoring modules covering loudness, dynamics, stereo imaging, waveform, frequency analysis, and pitch; everything needed to make informed mixing and mastering decisions without switching tools.
+- **3D Spectrogram Engine**: A three-dimensional view of your audio's frequency content, updated in real time. Visualise how energy is distributed across the spectrum over time, with ten distinct animation modes to suit different analytical or aesthetic preferences.
+
+- **Full Metering Suite**: 16 independent monitoring and analysis modules covering loudness, dynamics, distortion, stereo imaging, waveform, frequency analysis, and pitch — everything needed to make informed mixing and mastering decisions without switching tools.
+
 - **Standalone Application**: Runs as a native macOS application. No browser, no subscription, no account. Open it and it works.
+
 - **Fully Offline**: No internet connection is ever required or used. All processing happens locally on your machine.
-- **Floating Module Windows**: Each metering module is an independent window. Drag them anywhere on screen, resize them to any size and save that arrangement as your default layout. Different sessions, different setups.
-- **Seven Visual Themes**: Switch between Teal, Pink, Purple, Green, White, Blue and Windows 98 to match your studio environment or personal preference.
+
+- **Floating Module Windows**: Each metering module is an independent window. Drag them anywhere on screen, resize them to any size, and save that arrangement as your default layout. Different sessions, different setups.
+
+- **11 Visual Themes**: Switch between Teal, Pink, Purple, Green, White, Blue, Windows 98, Oscilloscope, VHS, Thermal and Blueprint to match your studio environment or personal preference.
+
 - **Minimalist Interface**: Dark-themed and high-contrast, designed to be readable at a glance in low-light studio environments without distracting from the listening experience.
 
 ---
@@ -86,17 +92,26 @@ Captures audio directly from your microphone or audio interface. Use this mode w
 
 ## 𝐌𝐨𝐝𝐮𝐥𝐞𝐬
 
+## Modules
+
 | Module | What it shows | Display options |
 | :--- | :--- | :--- |
-| **Spectrogram 3D** | A three-dimensional representation of your audio's frequency content over time. Energy is shown across the full spectrum, with depth representing time history. | Sphere, Wave, Cube, Terminal, Singularity |
+| **Spectrogram 3D** | A three-dimensional representation of your audio's frequency content over time. Energy is shown across the full spectrum, with depth representing time history. | Sphere, Wave, Polygon, Cube, Terminal, Singularity, Smoke, Matter, Reaction, Neural |
 | **FFT Meter** | A precise frequency spectrum display spanning 20 Hz to 20 kHz on a logarithmic scale, the same scale your ears use. A live readout marks the loudest frequency and its musical note name. Peak-hold lines show recent transient activity. | Line, Bars, Binary |
-| **Level Meters** | Industry-standard loudness metering. Shows peak levels for left and right channels in dBFS, plus Momentary, Short-Term, and Integrated LUFS to ITU-R BS.1770-4 spec. Also displays Crest Factor, the gap between peak and average, which indicates dynamic range. | Horizontal, Vertical |
+| **Mid/Side FFT** | The same 20 Hz–20 kHz spectrum as the FFT Meter, split into Mid (mono-compatible centre content) and Side (stereo-only content). Useful for checking how much low-end energy sits in the sides, a common cause of mono-compatibility issues and how wide a mix is at each frequency. | - |
+| **THD Analyzer** | Measures total harmonic distortion against the strongest fundamental frequency present in the signal. Shows the fundamental (F0), overall THD percentage and a bar chart of the first several harmonics relative to the fundamental, useful for spotting distortion introduced by gear, plugins or clipping. | - |
+| **Level Meters** | Industry-standard loudness metering. Shows peak levels for left and right channels in dBFS, plus Momentary, Short-Term and Integrated LUFS to ITU-R BS.1770-4 spec. Also displays Crest Factor, the gap between peak and average, which indicates dynamic range. | Horizontal, Vertical |
+| **Dynamic Range** | A live DR reading, the gap between rolling peak level and integrated RMS, plus a scrolling history graph. A higher value means a more dynamic, less compressed signal; a lower value indicates heavier limiting or compression. | - |
+| **Transient Meter** | Splits the incoming signal into a fast (transient/attack) component and a slow (sustained) component using dual envelope followers, shown as two side-by-side level bars. Useful for judging how punchy versus sustained a mix or individual source is. | - |
+| **Loudness History** | A scrolling graph of Short-Term and Integrated LUFS over the current session (up to five minutes of history), so you can see how loudness has trended rather than just its current value. | - |
 | **Analog VU Meter** | A faithful recreation of the classic hardware VU meter, with a 300 ms ballistic integration time that reflects perceived loudness similarly to how engineers trained on analogue consoles think about level. | Classic needle, Modern LED bar |
-| **Oscilloscope** | Displays the raw audio waveform for both left and right channels simultaneously in real time. Useful for checking waveform symmetry, clipping and the relationship between channels. Zero-crossing trigger ensures a stable, readable display. | - |
+| **Oscilloscope** | Displays the raw audio waveform for both left and right channels simultaneously in real time. Useful for checking waveform symmetry, clipping, and the relationship between channels. Zero-crossing trigger ensures a stable, readable display. | - |
 | **Stereo Monitor** | A vector scope showing the stereo image as a Lissajous figure. A perfectly mono signal appears as a vertical line. A wide stereo signal fills toward the corners. Out-of-phase audio pulls the image horizontal. Phosphor persistence gives a sense of movement history. | - |
-| **Pitch & Stats** | A collection of analytical readouts: the dominant musical pitch currently present in the signal, an estimate of the audio's bit depth, DC offset per channel (a sign of hardware or plugin issues) and stereo phase correlation. | - |
-| **Linear Spectrogram** | A scrolling waterfall display that shows frequency energy moving left to right over time. Useful for spotting sustained resonances, tonal buildup, or low-frequency energy that is difficult to see in a standard FFT display. | Theme colours, Classic thermal palette |
 | **Phase Correlation** | Shows the phase relationship between the left and right channels on a scale from -1 to +1. A reading near +1 means the channels are in phase and will sum correctly to mono. A reading near -1 means the channels are out of phase and will partially or fully cancel in mono. Also displays Mid and Side levels. | - |
+| **Stereo Correlation** | A scrolling waterfall history of stereo phase correlation over time, colour-coded from fully out-of-phase to fully mono-compatible. Complements the live Phase Correlation reading by showing how correlation trends rather than just its current value. | - |
+| **Pitch & Stats** | A collection of analytical readouts: the dominant musical pitch currently present in the signal, an estimate of the audio's bit depth, DC offset per channel (a sign of hardware or plugin issues) and stereo phase correlation. | - |
+| **Linear Spectrogram** | A scrolling waterfall display that shows frequency energy moving left to right over time. Useful for spotting sustained resonances, tonal buildup or low-frequency energy that is difficult to see in a standard FFT display. | Theme colours, Classic thermal palette |
+| **Compare Spectrogram** | Loads a reference WAV file and overlays its averaged frequency spectrum against the live incoming signal, so you can A/B a mix against a reference track directly on the same graph. | - |
 
 ---
 
