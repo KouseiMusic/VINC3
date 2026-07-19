@@ -2,9 +2,9 @@
 
 ## 𝟐.𝟎.𝟎 (𝟐𝟏.𝟎𝟖.𝟐𝟎𝟐𝟔)
 
-### 𝐍𝐞𝐰 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 & 𝐈𝐦𝐩𝐫𝐨𝐯𝐞𝐦𝐞𝐧𝐭𝐬
+### 𝐍𝐞𝐰 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
 
-- **New Modules**: Added 7 new modules including Mid/Side FFT, Dynamic Range Meter, Loudness History Graph, Compare Spectrogram, Stereo Correlation Waterfall, THD Analyzer and Transient Meter.
+- **New Modules**: Added 7 new modules including Mid/Side FFT, Dynamic Range Meter, Loudness History, Compare Spectrogram, Stereo Correlation, THD Analyzer and Transient Meter.
 
 - **Visual Themes**: Added 4 new aesthetic themes: Blueprint, Oscilloscope, VHS and Thermal.
 
