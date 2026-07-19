@@ -4,11 +4,11 @@
 
 ### New Features & Improvements
 
-- **New Modules**: Added 7 new modules including Mid/Side FFT, Dynamic Range Meter, Loudness History Graph, Compare Spectrogram, Stereo Correlation Waterfall, THD Analyzer, and Transient Meter.
+- **New Modules**: Added 7 new modules including Mid/Side FFT, Dynamic Range Meter, Loudness History Graph, Compare Spectrogram, Stereo Correlation Waterfall, THD Analyzer and Transient Meter.
 
-- **Visual Themes**: Added 4 new aesthetic themes: Blueprint, Oscilloscope, VHS, and Thermal.
+- **Visual Themes**: Added 4 new aesthetic themes: Blueprint, Oscilloscope, VHS and Thermal.
 
-- **3D Spectrogram**: Added 5 new visualization modes: Polygon, Smoke, Matter, Reaction, and Neural Mesh.
+- **3D Spectrogram**: Added 5 new visualization modes: Polygon, Smoke, Matter, Reaction and Neural Mesh.
 
 - **Singularity**: Reversed the rotation direction of the dust particle animation.
 
@@ -20,11 +20,11 @@
 
 - Fixed Integrated LUFS reading lower than the true value of the signal. The measurement is designed to ignore silence and very quiet passages so they do not drag the average down, but the threshold for what counts as "too quiet to include" was set far too low. Quiet passages that should have been excluded were being factored in. The threshold now matches the broadcast loudness standard exactly (ITU-R BS.1770-4).
 
-- Fixed LUFS values drifting away from their true readings after several hours of continuous use. Computers accumulate tiny rounding errors when doing repeated arithmetic, and the LUFS running average was never corrected for this. Over a long session the drift became noticeable. The accumulator now resets its total periodically to keep readings accurate regardless of session length.
+- Fixed LUFS values drifting away from their true readings after several hours of continuous use. Computers accumulate tiny rounding errors when doing repeated arithmetic and the LUFS running average was never corrected for this. Over a long session the drift became noticeable. The accumulator now resets its total periodically to keep readings accurate regardless of session length.
 
 ### Reliability
 
-- Fixed the Neural Mesh visualization showing a flat black background in the oscilloscope theme instead of the dark-green CRT backdrop used everywhere else in that theme. Its canvas was fully opaque and always painted solid black, which blocked the theme's background from showing through — Crystal, Matter, and Smoke all render onto a transparent canvas with a translucent background fill for this exact reason, so the dark-green backdrop shows through underneath. Neural Mesh now does the same for the oscilloscope theme specifically.
+- Fixed the Neural Mesh visualization showing a flat black background in the oscilloscope theme instead of the dark-green CRT backdrop used everywhere else in that theme. Its canvas was fully opaque and always painted solid black, which blocked the theme's background from showing through - Crystal, Matter, and Smoke all render onto a transparent canvas with a translucent background fill for this exact reason, so the dark-green backdrop shows through underneath. Neural Mesh now does the same for the oscilloscope theme specifically.
 
 - Fixed System audio mode silencing the Mac's actual audio output for the entire capture session. The main process was requesting `audio: 'loopbackWithMute'` from ScreenCaptureKit, which — despite the name reading like an echo-cancellation setting — mutes the system's real output, not just the captured copy. Switched to `audio: 'loopback'`, which captures the same audio without muting anything.
 
@@ -38,7 +38,7 @@
 
 - Fixed every "LOAD REF WAV" in Compare Spectrogram opening a new real-time AudioContext that was never closed, leaking one per file loaded in a session.
 
-- Fixed the Crystal, Matter, and Smoke Spectrogram (WebGL) visualizations leaking their shaders, geometry buffers, and — for Smoke — render-target textures/framebuffers every time the effect re-ran (switching themes, starting/stopping capture, or changing 3D mode). Smoke in particular deleted none of its GPU resources on cleanup. All three now also stop cleanly if the GPU context is lost instead of continuing to render into a dead context.
+- Fixed the Crystal, Matter, and Smoke Spectrogram (WebGL) visualizations leaking their shaders, geometry buffers and for Smoke, render-target textures/framebuffers every time the effect re-ran (switching themes, starting/stopping capture, or changing 3D mode). Smoke in particular deleted none of its GPU resources on cleanup. All three now also stop cleanly if the GPU context is lost instead of continuing to render into a dead context.
 
 ### 𝐌𝐞𝐭𝐞𝐫𝐢𝐧𝐠 & 𝐀𝐜𝐜𝐮𝐫𝐚𝐜𝐲
 
@@ -82,7 +82,7 @@
 
 ### Security
 
-- Added `NSAudioCaptureUsageDescription` to Info.plist. Recent Chromium versions silently return a dead, trackless audio stream from system-audio capture on macOS Sonoma+ if this key is absent — no error is raised, so this could present as "system audio just doesn't work" with no clue why.
+- Added `NSAudioCaptureUsageDescription` to Info.plist. Recent Chromium versions silently return a dead, trackless audio stream from system-audio capture on macOS Sonoma+ if this key is absent no error is raised, so this could present as "system audio just doesn't work" with no clue why.
 
 - Denied window.open()/new-window and cross-origin navigation attempts from the main window (defense in depth; nothing currently triggers this, but a compromised renderer could otherwise pivot into loading remote content).
 
@@ -110,7 +110,7 @@
 
 ### Settings
 
-- Fixed theme selection and audio source not being remembered after closing and reopening the application. Two separate parts of the application were using different internal names when saving and reading these preferences, so they never matched on the next launch. Every session started on the default teal theme and System source regardless of what had been set. The names are now unified, and preferences are saved the moment they are changed rather than only when Save Layout is clicked.
+- Fixed theme selection and audio source not being remembered after closing and reopening the application. Two separate parts of the application were using different internal names when saving and reading these preferences, so they never matched on the next launch. Every session started on the default teal theme and System source regardless of what had been set. The names are now unified and preferences are saved the moment they are changed rather than only when Save Layout is clicked.
 
 ---
 
