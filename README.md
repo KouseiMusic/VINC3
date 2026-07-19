@@ -4,7 +4,7 @@ _<p align="center">Audio Analysis & DSP Metering. Frequency Visualization & Audi
 
 ---
 
-![Version](https://img.shields.io/badge/Version-1.2.0-brightgreen?style=flat-square)
+![Version](https://img.shields.io/badge/Version-2.0.0-brightgreen?style=flat-square)
 ![macOS Support](https://img.shields.io/badge/macOS-Sonoma%20%7C%20Sequoia%20%7C%20Tahoe-000000?style=flat-square&logo=apple&logoColor=white)
 ![Architecture](https://img.shields.io/badge/Architecture-Universal-black?labelColor=606060&style=flat-square&logo=apple&logoColor=white)
 ![Format](https://img.shields.io/badge/Format-Standalone-00CED1?style=flat-square)
