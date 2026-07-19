@@ -1,6 +1,44 @@
 # 𝐕𝐈𝐍𝐂𝟑 - 𝐂𝐡𝐚𝐧𝐠𝐞𝐥𝐨𝐠
 
-## 𝟏.𝟐.𝟎 (𝟎𝟔-𝟐𝟎𝟐𝟔)
+## 𝟐.𝟎.𝟎 (𝟐𝟏.𝟎𝟖.𝟐𝟎𝟐𝟔)
+
+### New Features & Improvements
+
+- **New Modules**: Added 7 new modules including Mid/Side FFT, Dynamic Range Meter, Loudness History Graph, Compare Spectrogram, Stereo Correlation Waterfall, THD Analyzer, and Transient Meter.
+
+- **Visual Themes**: Added 4 new aesthetic themes: Blueprint, Oscilloscope, VHS, and Thermal.
+
+- **3D Spectrogram**: Added 5 new visualization modes: Polygon, Smoke, Matter, Reaction, and Neural Mesh.
+
+- **Singularity**: Reversed the rotation direction of the dust particle animation.
+
+- **Pitch & Stats**: Reduced the font size of text values and legends by 20% to improve visual hierarchy.
+
+### Metering & Accuracy
+
+- Fixed the Pitch & Stats panel showing a completely wrong peak level reading. The meter was converting the level value twice by mistake, producing numbers that bore no relation to the actual signal. For example, a signal at -20 dB would appear as roughly +26 dB. Readings are now accurate.
+
+- Fixed Integrated LUFS reading lower than the true value of the signal. The measurement is designed to ignore silence and very quiet passages so they do not drag the average down, but the threshold for what counts as "too quiet to include" was set far too low. Quiet passages that should have been excluded were being factored in. The threshold now matches the broadcast loudness standard exactly (ITU-R BS.1770-4).
+
+- Fixed LUFS values drifting away from their true readings after several hours of continuous use. Computers accumulate tiny rounding errors when doing repeated arithmetic, and the LUFS running average was never corrected for this. Over a long session the drift became noticeable. The accumulator now resets its total periodically to keep readings accurate regardless of session length.
+
+### Reliability
+
+- Fixed the Neural Mesh visualization showing a flat black background in the oscilloscope theme instead of the dark-green CRT backdrop used everywhere else in that theme. Its canvas was fully opaque and always painted solid black, which blocked the theme's background from showing through — Crystal, Matter, and Smoke all render onto a transparent canvas with a translucent background fill for this exact reason, so the dark-green backdrop shows through underneath. Neural Mesh now does the same for the oscilloscope theme specifically.
+
+- Fixed System audio mode silencing the Mac's actual audio output for the entire capture session. The main process was requesting `audio: 'loopbackWithMute'` from ScreenCaptureKit, which — despite the name reading like an echo-cancellation setting — mutes the system's real output, not just the captured copy. Switched to `audio: 'loopback'`, which captures the same audio without muting anything.
+
+- Fixed pressing INITIALIZE rapidly or twice in quick succession still being able to start the audio engine twice at once under certain timing (the previous guard checked state that only updates after the microphone/screen permission prompt resolves, leaving a window where a second click could slip through before the first had finished setting up). The guard is now synchronous and closes that window completely; the INITIALIZE button also now disables itself and reads "INITIALIZING…" while a request is in flight.
+
+- Fixed the THD Analyzer's fundamental-frequency estimate permanently locking to "NaN" for the rest of the session after a single flat, silent, or clipped (0 dBFS) input frame. The parabolic peak-interpolation math divided by a value that could legitimately be zero; it's now guarded and falls back to the un-interpolated bin.
+
+- Fixed a legitimate 0 dB reading (signal at full scale) being mis-displayed as near-silence in the THD Analyzer and FFT Sniper's hover readout, caused by treating `0` as a missing value.
+
+- Fixed STOP not releasing the Mid/Side analyser nodes, leaving them dangling on stale references until the next START overwrote them.
+
+- Fixed every "LOAD REF WAV" in Compare Spectrogram opening a new real-time AudioContext that was never closed, leaking one per file loaded in a session.
+
+- Fixed the Crystal, Matter, and Smoke Spectrogram (WebGL) visualizations leaking their shaders, geometry buffers, and — for Smoke — render-target textures/framebuffers every time the effect re-ran (switching themes, starting/stopping capture, or changing 3D mode). Smoke in particular deleted none of its GPU resources on cleanup. All three now also stop cleanly if the GPU context is lost instead of continuing to render into a dead context.
 
 ### 𝐌𝐞𝐭𝐞𝐫𝐢𝐧𝐠 & 𝐀𝐜𝐜𝐮𝐫𝐚𝐜𝐲
 
@@ -9,6 +47,14 @@
 - Fixed Integrated LUFS reading lower than the true value of the signal. The measurement is designed to ignore silence and very quiet passages so they do not drag the average down, but the threshold for what counts as "too quiet to include" was set far too low. Quiet passages that should have been excluded were being factored in. The threshold now matches the broadcast loudness standard exactly (ITU-R BS.1770-4).
 
 - Fixed LUFS values drifting away from their true readings after several hours of continuous use. Computers accumulate tiny rounding errors when doing repeated arithmetic and the LUFS running average was never corrected for this. Over a long session the drift became noticeable. The accumulator now resets its total periodically to keep readings accurate regardless of session length.
+
+### Interface
+
+- Fixed Level Meters stuttering and animating unevenly. The peak-hold indicator was causing the display to restart its update loop dozens of times per second every time a new peak was detected. Each restart introduced a brief gap visible as a stutter. The update loop now runs continuously without interruption.
+
+- Fixed the Linear Spectrogram bleeding the previous theme's colours through the display for up to seventeen seconds after switching themes. The scrolling history image was never cleared when a theme change was applied, so the old colours remained visible underneath the new ones until the history scrolled past. The history is now wiped immediately on theme change.
+
+- Fixed the green fullscreen button in the title bar being broken or permanently greyed out on macOS Sequoia and Tahoe. Two internal window settings were contradicting each other, which caused macOS to disable the button. The settings are now consistent and the button works as expected.
 
 ### 𝐒𝐲𝐬𝐭𝐞𝐦 𝐀𝐮𝐝𝐢𝐨
 
@@ -33,6 +79,38 @@
 - Fixed the audio engine maintaining an unnecessary connection to the system audio output while processing. It produced no sound, but the connection could cause unexpected behaviour on certain audio interfaces or virtual audio drivers. It has been replaced with a fully silenced internal path.
 
 - Fixed module windows saving the wrong size when a layout was saved immediately after resizing. The layout system was recording the size one step behind what was actually displayed on screen. Saved sizes now match what is visible in real time.
+
+### Security
+
+- Added `NSAudioCaptureUsageDescription` to Info.plist. Recent Chromium versions silently return a dead, trackless audio stream from system-audio capture on macOS Sonoma+ if this key is absent — no error is raised, so this could present as "system audio just doesn't work" with no clue why.
+
+- Denied window.open()/new-window and cross-origin navigation attempts from the main window (defense in depth; nothing currently triggers this, but a compromised renderer could otherwise pivot into loading remote content).
+
+- Added a Content-Security-Policy to the packaged app (production builds only, so it can't interfere with the dev server's HMR websocket).
+
+- Removed an unused IPC handler that returned thumbnail screenshots and titles of every open window on the system to the renderer; nothing in the app called it.
+
+- `sandbox: true` is now set explicitly on the renderer rather than relying on Electron's default.
+
+### UI & Visual Fixes
+
+- FFT Hover Details: Fixed an issue where the frequency/dB hover indicator would get cropped at the top and right edges of the FFT module window.
+
+- Pitch & Stats: Repositioned Bit Depth tracking display to avoid layout collision and improve the visual hierarchy.
+
+### Performance & Rendering Optimizations
+
+- Engine Acceleration: Added GPU acceleration flags (zero-copy, hardware rasterization) to the Electron main process for smoother UI rendering.
+
+- High-DPI Display Fixes: Capped the maximum physical device pixel ratio scaling inside Canvas modules to 2.0x to eliminate performance stuttering on 4K+ displays (Retina/ProDisplay XDR).
+
+- FFT Rendering: Replaced expensive shadowBlur API calls with optimized multi-stroke compositing, significantly reducing CPU/GPU overhead.
+
+- Spectrogram Engine: Migrated to hardware-accelerated canvas drawImage operation instead of CPU-bound getImageData for shifting the display buffers.
+
+### Settings
+
+- Fixed theme selection and audio source not being remembered after closing and reopening the application. Two separate parts of the application were using different internal names when saving and reading these preferences, so they never matched on the next launch. Every session started on the default teal theme and System source regardless of what had been set. The names are now unified, and preferences are saved the moment they are changed rather than only when Save Layout is clicked.
 
 ---
 
