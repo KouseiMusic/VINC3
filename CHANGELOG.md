@@ -2,7 +2,7 @@
 
 ## 𝟐.𝟎.𝟎 (𝟐𝟏.𝟎𝟖.𝟐𝟎𝟐𝟔)
 
-### New Features & Improvements
+### 𝐍𝐞𝐰 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 & 𝐈𝐦𝐩𝐫𝐨𝐯𝐞𝐦𝐞𝐧𝐭𝐬
 
 - **New Modules**: Added 7 new modules including Mid/Side FFT, Dynamic Range Meter, Loudness History Graph, Compare Spectrogram, Stereo Correlation Waterfall, THD Analyzer and Transient Meter.
 
@@ -10,11 +10,7 @@
 
 - **3D Spectrogram**: Added 5 new visualization modes: Polygon, Smoke, Matter, Reaction and Neural Mesh.
 
-- **Singularity**: Reversed the rotation direction of the dust particle animation.
-
-- **Pitch & Stats**: Reduced the font size of text values and legends by 20% to improve visual hierarchy.
-
-### Metering & Accuracy
+### 𝐌𝐞𝐭𝐞𝐫𝐢𝐧𝐠 & 𝐀𝐜𝐜𝐮𝐫𝐚𝐜𝐲
 
 - Fixed the Pitch & Stats panel showing a completely wrong peak level reading. The meter was converting the level value twice by mistake, producing numbers that bore no relation to the actual signal. For example, a signal at -20 dB would appear as roughly +26 dB. Readings are now accurate.
 
@@ -22,7 +18,7 @@
 
 - Fixed LUFS values drifting away from their true readings after several hours of continuous use. Computers accumulate tiny rounding errors when doing repeated arithmetic and the LUFS running average was never corrected for this. Over a long session the drift became noticeable. The accumulator now resets its total periodically to keep readings accurate regardless of session length.
 
-### Reliability
+### 𝐑𝐞𝐥𝐢𝐚𝐛𝐢𝐥𝐢𝐭𝐲
 
 - Fixed the Neural Mesh visualization showing a flat black background in the oscilloscope theme instead of the dark-green CRT backdrop used everywhere else in that theme. Its canvas was fully opaque and always painted solid black, which blocked the theme's background from showing through - Crystal, Matter, and Smoke all render onto a transparent canvas with a translucent background fill for this exact reason, so the dark-green backdrop shows through underneath. Neural Mesh now does the same for the oscilloscope theme specifically.
 
@@ -48,14 +44,6 @@
 
 - Fixed LUFS values drifting away from their true readings after several hours of continuous use. Computers accumulate tiny rounding errors when doing repeated arithmetic and the LUFS running average was never corrected for this. Over a long session the drift became noticeable. The accumulator now resets its total periodically to keep readings accurate regardless of session length.
 
-### Interface
-
-- Fixed Level Meters stuttering and animating unevenly. The peak-hold indicator was causing the display to restart its update loop dozens of times per second every time a new peak was detected. Each restart introduced a brief gap visible as a stutter. The update loop now runs continuously without interruption.
-
-- Fixed the Linear Spectrogram bleeding the previous theme's colours through the display for up to seventeen seconds after switching themes. The scrolling history image was never cleared when a theme change was applied, so the old colours remained visible underneath the new ones until the history scrolled past. The history is now wiped immediately on theme change.
-
-- Fixed the green fullscreen button in the title bar being broken or permanently greyed out on macOS Sequoia and Tahoe. Two internal window settings were contradicting each other, which caused macOS to disable the button. The settings are now consistent and the button works as expected.
-
 ### 𝐒𝐲𝐬𝐭𝐞𝐦 𝐀𝐮𝐝𝐢𝐨
 
 - Fixed SYSTEM mode silently producing no signal on macOS even after Screen Recording permission had been granted. An internal setting that only applies on Windows was mistakenly being applied on macOS as well. macOS does not recognise it and when it encountered it; discarded the audio track without any error message. Removing it restores reliable system audio capture on all supported macOS versions.
@@ -80,7 +68,7 @@
 
 - Fixed module windows saving the wrong size when a layout was saved immediately after resizing. The layout system was recording the size one step behind what was actually displayed on screen. Saved sizes now match what is visible in real time.
 
-### Security
+### 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲
 
 - Added `NSAudioCaptureUsageDescription` to Info.plist. Recent Chromium versions silently return a dead, trackless audio stream from system-audio capture on macOS Sonoma+ if this key is absent no error is raised, so this could present as "system audio just doesn't work" with no clue why.
 
@@ -92,13 +80,17 @@
 
 - `sandbox: true` is now set explicitly on the renderer rather than relying on Electron's default.
 
-### UI & Visual Fixes
+### 𝐔𝐈 & 𝐕𝐢𝐬𝐮𝐚𝐥 𝐅𝐢𝐱𝐞𝐬
+
+- Singularity: Reversed the rotation direction of the dust particle animation.
+
+- Pitch & Stats: Reduced the font size of text values and legends by 20% to improve visual hierarchy.
 
 - FFT Hover Details: Fixed an issue where the frequency/dB hover indicator would get cropped at the top and right edges of the FFT module window.
 
 - Pitch & Stats: Repositioned Bit Depth tracking display to avoid layout collision and improve the visual hierarchy.
 
-### Performance & Rendering Optimizations
+### 𝐏𝐞𝐫𝐟𝐨𝐫𝐦𝐚𝐧𝐜𝐞 & 𝐑𝐞𝐧𝐝𝐞𝐫𝐢𝐧𝐠 𝐎𝐩𝐭𝐢𝐦𝐢𝐳𝐚𝐭𝐢𝐨𝐧𝐬
 
 - Engine Acceleration: Added GPU acceleration flags (zero-copy, hardware rasterization) to the Electron main process for smoother UI rendering.
 
@@ -108,7 +100,7 @@
 
 - Spectrogram Engine: Migrated to hardware-accelerated canvas drawImage operation instead of CPU-bound getImageData for shifting the display buffers.
 
-### Settings
+### 𝐒𝐞𝐭𝐭𝐢𝐧𝐠𝐬
 
 - Fixed theme selection and audio source not being remembered after closing and reopening the application. Two separate parts of the application were using different internal names when saving and reading these preferences, so they never matched on the next launch. Every session started on the default teal theme and System source regardless of what had been set. The names are now unified and preferences are saved the moment they are changed rather than only when Save Layout is clicked.
 
